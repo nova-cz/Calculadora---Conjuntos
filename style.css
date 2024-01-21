@@ -4,7 +4,7 @@
   font-weight: 400;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background: linear-gradient(45deg, #78075c, #c20cb0, #78075c),
+  background: linear-gradient(45deg, #565656, #b1b1b2, #565656),
               repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.05) 10px, transparent 10px, transparent 20px);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -21,6 +21,7 @@ body {
   min-height: 100vh;
 }
 
+
 #app {
   max-width: 1280px;
   margin: 0 auto;
@@ -29,11 +30,12 @@ body {
 }
 
 h1 {
-  font-size: 5.2em;
+  font-size: 7.2em;
   line-height: 1.1;
-  margin-bottom: 100px; 
+  margin-bottom: 0.5em; /* Ajusta el valor según sea necesario */
 }
 
+/* Estilos comunes para todos los tamaños de pantalla */
 .btn {
   border-radius: 20px;
   border: .3px solid transparent;
@@ -50,14 +52,47 @@ h1 {
   margin-bottom: 40px;
   text-decoration: none;
 }
+/* #07166d, #1037d6, #060860 */
 
 .btn:hover {
-  background: linear-gradient(90deg, #1f2735, #17202b);
+  background: linear-gradient(90deg, #1037d6, #060860);
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 }
+
 
 .btn:focus,
 .btn:focus-visible {
   outline: 40px auto -webkit-focus-ring-color;
 }
 
+/* Estilos para tamaños de pantalla mayores a 768px */
+@media (min-width: 768px) {
+  .btn {
+    font-size: 1.5em; /* Ajusta el tamaño de la fuente según sea necesario */
+    text-align: center;
+    padding: 10px 20px; /* Ajusta el relleno según sea necesario */
+    width: auto; /* Ancho automático para que se ajuste al contenido */
+    display: block; /* Hace que los botones ocupen todo el ancho disponible */
+    margin-left: auto; /* Centra el botón en la pantalla móvil */
+    margin-right: auto; /* Centra el botón en la pantalla móvil */
+  }
+  h1{
+    font-size: 3.5em; /* Utiliza vw para que el tamaño se ajuste al ancho de la vista */
+  }
+}
+
+/* Estilos para tamaños de pantalla menores o iguales a 767px (móviles) */
+@media (max-width: 767px) {
+  .btn {
+    font-size: 1.5em; /* Ajusta el tamaño de la fuente según sea necesario */
+    text-align: center;
+    padding: 10px 20px; /* Ajusta el relleno según sea necesario */
+    width: auto; /* Ancho automático para que se ajuste al contenido */
+    display: block; /* Hace que los botones ocupen todo el ancho disponible */
+    margin-left: auto; /* Centra el botón en la pantalla móvil */
+    margin-right: auto; /* Centra el botón en la pantalla móvil */
+  }
+  h1{
+    font-size: 2.5em; /* Utiliza vw para que el tamaño se ajuste al ancho de la vista */
+  }
+}
