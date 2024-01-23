@@ -11,16 +11,106 @@
 
 <body>
     <nav class="nav">
-        <h1 class="nav_logo">CONJUNTOS</h1>
-        <a href="#menu" class="nav_target">
-            <img class="nav_icon" src="/src/images/c3.png" >
-        </a>
-        <div class="nav_links" id="menu">
-            <a class="nav_link" href="/index.html">Inicio</a>
-            <a class="nav_link" href="/src/pages/grafos">Grafos</a>
-            <a class="nav_link" href="/src/pages/etc/">Etc</a>
+
+        <div class="nav__container">
+
+            <h1 class="nav__title">Conjuntos</h1>
+
+            <a href="#menu" class="nav__menu">
+                <img src="./assets/menu.svg" class="nav__icon">
+            </a>
+
+            <a href="#" class="nav__menu nav__menu--second">
+                <img src="./assets/close.svg" class="nav__icon ">
+            </a>
+
+            <ul class="dropdown" id="menu">
+
+                <li class="dropdown__list">
+                    <a href="/index.html" class="dropdown__link">
+                        <img src="./assets/house.svg" class="dropdown__icon">
+                        <span class="dropdown__span">Inicio</span>
+                    </a>
+                </li>
+
+                <li class="dropdown__list">
+                    <a href="#" class="dropdown__link">
+                        <img src="./assets/projects.svg" class="dropdown__icon">
+                        <span class="dropdown__span">Conjuntos</span>
+                        <img src="./assets/down.svg" class="dropdown__arrow">
+
+                        <input type="checkbox" class="dropdown__check">
+                    </a>
+
+                    <div class="dropdown__content">
+
+                        <ul class="dropdown__sub">
+
+                            <li class="dropdown__li">
+                                <a href="/src/pages/conjuntos/operaciones-pages/union/union.html" class="dropdown__anchor">Union</a>
+                            </li>
+                            <li class="dropdown__li">
+                                <a href="/src/pages/conjuntos/operaciones-pages/interseccion/interseccion.html" class="dropdown__anchor">Interseccion</a>
+                            </li>
+                            <li class="dropdown__li">
+                                <a href="/src/pages/conjuntos/operaciones-pages/ver-subconjuntos/subconjuntos.html" class="dropdown__anchor">Subconjunto</a>
+                            </li>
+                            <li class="dropdown__li">
+                                <a href="/src/pages/conjuntos/operaciones-pages/diferencia/diferencia.html" class="dropdown__anchor">Diferencia</a>
+                            </li>
+                            <li class="dropdown__li">
+                                <a href="/src/pages/conjuntos/operaciones-pages/diferencia-simetrica/dife-simetrica.html" class="dropdown__anchor">Diferencia SImetrica</a>
+                            </li>
+                            <li class="dropdown__li">
+                                <a href="/src/pages/conjuntos/operaciones-pages/cardinalidad/cardinalidad.html" class="dropdown__anchor">Cardinalidad</a>
+                            </li>
+                            <li class="dropdown__li">
+                                <a href="/src/pages/conjuntos/operaciones-pages/conjunto-potencia/potencia.html" class="dropdown__anchor">Potencia</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </li>
+
+                <li class="dropdown__list">
+                    <a href="#" class="dropdown__link">
+                        <img src="./assets/email.svg" class="dropdown__icon">
+                        <span class="dropdown__span">Contacto</span>
+                        <img src="./assets/down.svg" class="dropdown__arrow">
+
+                        <input type="checkbox" class="dropdown__check">
+                    </a>
+
+                    <div class="dropdown__content">
+
+                        <ul class="dropdown__sub">
+
+                            <li class="dropdown__li">
+                                <a href="#" class="dropdown__anchor">Contact 1</a>
+                            </li>
+                            <li class="dropdown__li">
+                                <a href="#" class="dropdown__anchor">Contact 2</a>
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+                </li>
+
+                <li class="dropdown__list">
+                    <a href="#" class="dropdown__link">
+                        <img src="./assets/help.svg" class="dropdown__icon">
+                        <span class="dropdown__span">Info</span>
+                    </a>
+                </li>
+
+            </ul>
+
         </div>
+
     </nav>
+
 
     <h1 class="titulo">OPERACIONES DE CONJUNTOS</h1>
     
@@ -33,37 +123,37 @@
             </a>
         </div>
         <div class="enlace">
-            <a class="link" href="/src/pages/conjuntos/operaciones-pages/union/union.html" type="html">
+            <a class="link" href="/src/pages/conjuntos/operaciones-pages/interseccion/interseccion.html" type="html">
                 <img class="simbolo" src="/src/images/I.png" alt="Intersección">
                 <p>Intersección</p>
             </a>
         </div>
         <div class="enlace">
-            <a class="link" href="/src/pages/conjuntos/operaciones-pages/union/union.html" type="html">
+            <a class="link" href="/src/pages/conjuntos/operaciones-pages/ver-subconjuntos/subconjuntos.html" type="html">
                 <img class="simbolo" src="/src/images/S.png" alt="Subconjunto">
                 <p>Subconjunto</p>
             </a>
         </div>
         <div class="enlace">
-            <a class="link" href="/src/pages/conjuntos/operaciones-pages/union/union.html" type="html">
+            <a class="link" href="/src/pages/conjuntos/operaciones-pages/diferencia/diferencia.html" type="html">
                 <img class="simbolo" src="/src/images/D.png" alt="Diferencia">
                 <p>Diferencia</p>
             </a>
         </div>
         <div class="enlace">
-            <a class="link" href="/src/pages/conjuntos/operaciones-pages/union/union.html" type="html">
+            <a class="link" href="/src/pages/conjuntos/operaciones-pages/diferencia-simetrica/dife-simetrica.html" type="html">
                 <img class="simbolo" src="/src/images/D.png" alt="Diferencia Simetrica">
                 <p>Diferencia Simetrica</p>
             </a>
         </div>
         <div class="enlace">
-            <a class="link" href="/src/pages/conjuntos/operaciones-pages/union/union.html" type="html">
+            <a class="link" href="/src/pages/conjuntos/operaciones-pages/cardinalidad/cardinalidad.html" type="html">
                 <img class="simbolo" src="/src/images/C.png" alt="Cardinalidad">
                 <p>Cardinalidad</p>
             </a>
         </div>
         <div class="enlace">
-            <a class="link" href="/src/pages/conjuntos/operaciones-pages/union/union.html" type="html">
+            <a class="link" href="/src/pages/conjuntos/operaciones-pages/conjunto-potencia/potencia.html" type="html">
                 <img class="simbolo" src="/src/images/p.png" alt="Conjunto Potencia">
                 <p>Conjunto Potencia</p>
             </a>
