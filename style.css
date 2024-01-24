@@ -282,28 +282,19 @@ footer a:hover {
 /* Estilos para tamaños de pantalla menores o iguales a 896px */
 @media (max-width: 896px) {
   .btn {
-    font-size: 1.5em; /* Ajusta el tamaño de la fuente */
     text-align: center; /* Alineación del texto al centro */
     padding: 10px 20px; /* Relleno interno */
     width: auto; /* Ancho automático */
     display: block; /* Hace que los botones ocupen todo el ancho disponible */
     margin-left: auto; /* Centra el botón en la pantalla móvil */
     margin-right: auto; /* Centra el botón en la pantalla móvil */
-    margin-top: 50px; /* Ajusta la distancia desde la parte superior según tus necesidades */
+    margin-top: 40px; /* Ajusta la distancia desde la parte superior según tus necesidades */
   }
   #app .titulo {
-    font-size: 3em;
+    font-size: 4em;
     margin-bottom: 0;
-    margin-top: 3em;
+    margin-top: 2.2em;
   }
-
 }
 
-@media (max-width: 667px) {
 
-  #app .titulo {
-    font-size: 3em;
-    margin-bottom: 0;
-  }
-
-}
