@@ -1,98 +1,309 @@
+/* Definición de variables de estilo global */
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background: linear-gradient(45deg, #565656, #b1b1b2, #565656),
-              repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.05) 10px, transparent 10px, transparent 20px);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; /* Familia de fuentes */
+  line-height: 1.5; /* Altura de línea */
+  font-weight: 400; /* Grosor de la fuente */
+  color-scheme: light dark; /* Esquema de colores */
+  color: rgba(255, 255, 255, 0.87); /* Color del texto */
+  background: #151515; /* Color de fondo */
+  font-synthesis: none; /* Desactiva la síntesis de fuentes */
+  text-rendering: optimizeLegibility; /* Optimiza la legibilidad del texto */
+  -webkit-font-smoothing: antialiased; /* Suavizado de fuentes para WebKit */
+  -moz-osx-font-smoothing: grayscale; /* Suavizado de fuentes para Firefox en macOS */
 }
-
+/*fe7b11*/
+/* Estilos generales del cuerpo del documento */
 body {
   margin: 0;
-  display: flex;
-  flex-direction: column; 
-  align-items: center;
-  min-width: 320px;
+  padding: 0;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+*{
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.nav {
+  background: #ff1844;
+  --img1: scale(1);
+  --img2: scale(0);
+}
+
+.nav:has(.dropdown:target) {
+  --img1: scale(0);
+  --img2: scale(1);
+
+  --clip: inset(0 0 0 0);
+}
+
+.nav__container {
+  width: 100%;
+  margin: 0 auto;
+  height: 100%; /* Cambiado a 100% para ocupar toda la altura */
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-template-areas: "title img";
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.nav__title {
+  color: #fff;
+  grid-area: title;
+  margin-left: 20px; /* Ajusta el margen izquierdo según tus preferencias */
+}
+
+.nav__menu {
+  grid-area: img;
+  position: relative;
+  z-index: 10;
+
+  transform: var(--img1);
+}
+
+.nav__menu--second {
+  transform: var(--img2);
+}
+
+.nav__icon {
+  width: 30px;
+  display: block;
+}
+
+.dropdown {
+  position: absolute;
+  background-color: #000;
+  width: 75%;
+  max-width: 300px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 1em;
+
+  display: grid;
+  align-content: center;
+  gap: 1rem;
+
+  overflow-y: auto;
+
+  clip-path: var(--clip, inset(0 0 100% 100%));
+  transition: clip-path 0.5s;
+}
+
+.dropdown__list {
+  list-style: none;
+}
+
+.dropdown__link {
+  color: rgb(184, 187, 191);
+  padding: 1em 0.7em;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  position: relative;
+  background-color: var(--bg, transparent);
+  border-radius: 6px;
+}
+
+.dropdown__list:has(:checked) {
+  --rows: 1fr;
+  --rotate: rotate(180deg);
+  --bg: #28303b;
+}
+
+.dropdown__check {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.dropdown__arrow {
+  margin-left: auto;
+  transform: var(--rotate, 0);
+  transition: 0.2s transform;
+}
+
+.dropdown__content {
+  display: grid;
+  grid-template-rows: var(--rows, 0fr);
+  transition: 0.3s grid-template-rows;
+}
+
+.dropdown__sub {
+  overflow: hidden;
+}
+
+.dropdown__li {
+  width: 85%;
+  list-style: none;
+  margin-left: auto;
+}
+
+.dropdown__anchor {
+  padding: 1em 0;
+  display: block;
+  color: #b6babe;
+  text-decoration: none;
 }
 
 
 #app {
+  flex: 1; /* Añade esta línea para que #app ocupe el espacio restante */
+  display: flex; /* Añade display: flex; */
+  flex-direction: column; /* Añade flex-direction: column; */
+  align-items: center; /* Centra los elementos verticalmente */
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-h1 {
-  font-size: 7.2em;
-  line-height: 1.1;
-  margin-bottom: 0.5em; /* Ajusta el valor según sea necesario */
+#app .titulo {
+  font-size: 6em; /* Tamaño de fuente ajustado según tus preferencias */
+  margin-bottom: 1em;
 }
+
+/* Estilos del título principal */
+h1 {
+  margin-top: 1em; /* Margen superior */
+  line-height: 1.1; /* Altura de línea del título */
+  margin-bottom: 1em; /* Margen inferior */
+}
+
 
 /* Estilos comunes para todos los tamaños de pantalla */
 .btn {
-  border-radius: 20px;
-  border: .3px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 2em;
-  color: #f9f9f9;
-  font-weight: 500;
-  font-family: inherit;
-  background: linear-gradient(90deg, #2d3a4a, #1f2735);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
-  margin-top: 10px;
-  margin-bottom: 40px;
-  text-decoration: none;
-}
-/* #07166d, #1037d6, #060860 */
-
-.btn:hover {
-  background: linear-gradient(90deg, #1037d6, #060860);
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+  border-radius: 20px; /* Radio de borde para esquinas redondeadas */
+  border: .3px solid transparent; /* Borde transparente */
+  padding: 0.6em 1.2em; /* Relleno interno */
+  font-size: 2em; /* Tamaño de fuente */
+  color: #f9f9f9; /* Color del texto */
+  font-weight: 500; /* Grosor de la fuente */
+  font-family: inherit; /* Utiliza la fuente heredada del elemento padre */
+  background: #ff1844; /* Color de fondo */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: box-shadow 0.25s, background 0.25s; /* Transiciones suaves para la sombra y el fondo */
+  margin-top: 30px; /* Margen superior */
+  margin-bottom: 1em; /* Margen inferior */
+  text-decoration: none; /* Elimina la decoración del texto */
+  box-sizing: border-box; /* Incluye el borde y el relleno en el tamaño total del elemento */
+  max-width: 200px;
 }
 
 
-.btn:focus,
-.btn:focus-visible {
-  outline: 40px auto -webkit-focus-ring-color;
+
+/* Estilos del botón al pasar el mouse sobre él */
+.botones .btn:hover {
+  filter: brightness(1); /* Ajusta el brillo al pasar el mouse */
+  box-shadow: 0px 0px 0px 4px rgba(255, 255, 255, 0.8), 0px 2px 4px rgba(0, 0, 0, 0.2), 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra al pasar el mouse */
 }
+
+/* Estilos del botón cuando está enfocado */
+.botones .btn:focus {
+  filter: brightness(0.8); /* Ajusta el brillo al enfocar */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2), 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra al enfocar */
+  border: 4px solid rgba(255, 255, 255, 0.5); /* Borde al enfocar */
+  outline: none; /* Elimina el sombreado del foco */
+}
+
+/* Estilos del botón al hacer clic en él */
+.botones .btn:active {
+  filter: brightness(0.8); /* Ajusta el brillo al hacer clic */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2), 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra al hacer clic */
+  border: 4px solid rgba(255, 255, 255, 0.5); /* Borde al hacer clic */
+}
+
+footer {
+  background-color: #ce2140;
+  color: #fff;
+  padding: 1em;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+footer a {
+  color: #fff; /* Cambia el color del texto a blanco */
+  text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+footer a:hover {
+  text-decoration: underline; /* Agrega un subrayado al pasar el mouse sobre el enlace si lo deseas */
+}
+
 
 /* Estilos para tamaños de pantalla mayores a 768px */
-@media (min-width: 768px) {
+@media (min-width: 760px) {
   .btn {
-    font-size: 1.5em; /* Ajusta el tamaño de la fuente según sea necesario */
-    text-align: center;
-    padding: 10px 20px; /* Ajusta el relleno según sea necesario */
-    width: auto; /* Ancho automático para que se ajuste al contenido */
+    font-size: 1.5em; /* Ajusta el tamaño de la fuente */
+    text-align: center; /* Alineación del texto al centro */
+    padding: 10px 20px; /* Relleno interno */
+    width: auto; /* Ancho automático */
     display: block; /* Hace que los botones ocupen todo el ancho disponible */
     margin-left: auto; /* Centra el botón en la pantalla móvil */
     margin-right: auto; /* Centra el botón en la pantalla móvil */
   }
-  h1{
-    font-size: 3.5em; /* Utiliza vw para que el tamaño se ajuste al ancho de la vista */
+
+  .titulo {
+    font-size: 3.5em; /* Tamaño de fuente para títulos */
   }
 }
 
 /* Estilos para tamaños de pantalla menores o iguales a 767px (móviles) */
 @media (max-width: 767px) {
   .btn {
-    font-size: 1.5em; /* Ajusta el tamaño de la fuente según sea necesario */
-    text-align: center;
-    padding: 10px 20px; /* Ajusta el relleno según sea necesario */
-    width: auto; /* Ancho automático para que se ajuste al contenido */
+    font-size: 1.5em; /* Ajusta el tamaño de la fuente */
+    text-align: center; /* Alineación del texto al centro */
+    padding: 10px 20px; /* Relleno interno */
+    width: auto; /* Ancho automático */
     display: block; /* Hace que los botones ocupen todo el ancho disponible */
     margin-left: auto; /* Centra el botón en la pantalla móvil */
     margin-right: auto; /* Centra el botón en la pantalla móvil */
   }
-  h1{
-    font-size: 2.5em; /* Utiliza vw para que el tamaño se ajuste al ancho de la vista */
+
+  .titulo {
+    font-size: 5.5em; /* Tamaño de fuente para títulos */
   }
+}
+
+/* Estilos para tamaños de pantalla menores o iguales a 896px */
+@media (max-width: 896px) {
+  .btn {
+    font-size: 1.5em; /* Ajusta el tamaño de la fuente */
+    text-align: center; /* Alineación del texto al centro */
+    padding: 10px 20px; /* Relleno interno */
+    width: auto; /* Ancho automático */
+    display: block; /* Hace que los botones ocupen todo el ancho disponible */
+    margin-left: auto; /* Centra el botón en la pantalla móvil */
+    margin-right: auto; /* Centra el botón en la pantalla móvil */
+    margin-top: 50px; /* Ajusta la distancia desde la parte superior según tus necesidades */
+  }
+  #app .titulo {
+    font-size: 3em;
+    margin-bottom: 0;
+    margin-top: 3em;
+  }
+
+}
+
+@media (max-width: 667px) {
+
+  #app .titulo {
+    font-size: 3em;
+    margin-bottom: 0;
+  }
+
 }

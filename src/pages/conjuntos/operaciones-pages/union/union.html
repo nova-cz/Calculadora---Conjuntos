@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="icon" href="/src/images/icon2.png" />
-    <link rel="stylesheet" href="union.css">
+    <link rel="stylesheet" href="/style.css">
     <title>Document</title>
 </head>
 
@@ -17,27 +17,27 @@
             <h1 class="nav__title">Union</h1>
 
             <a href="#menu" class="nav__menu">
-                <img src="./assets/menu.svg" class="nav__icon">
+                <img src="/assets/menu.svg" class="nav__icon">
             </a>
 
             <a href="#" class="nav__menu nav__menu--second">
-                <img src="./assets/close.svg" class="nav__icon ">
+                <img src="/assets/close.svg" class="nav__icon ">
             </a>
 
             <ul class="dropdown" id="menu">
 
                 <li class="dropdown__list">
                     <a href="/index.html" class="dropdown__link">
-                        <img src="./assets/house.svg" class="dropdown__icon">
+                        <img src="/assets/house.svg" class="dropdown__icon">
                         <span class="dropdown__span">Inicio</span>
                     </a>
                 </li>
 
                 <li class="dropdown__list">
                     <a href="#" class="dropdown__link">
-                        <img src="./assets/projects.svg" class="dropdown__icon">
+                        <img src="/assets/projects.svg" class="dropdown__icon">
                         <span class="dropdown__span">Conjuntos</span>
-                        <img src="./assets/down.svg" class="dropdown__arrow">
+                        <img src="/assets/down.svg" class="dropdown__arrow">
 
                         <input type="checkbox" class="dropdown__check">
                     </a>
@@ -45,10 +45,6 @@
                     <div class="dropdown__content">
 
                         <ul class="dropdown__sub">
-
-                            <li class="dropdown__li">
-                                <a href="/src/pages/conjuntos/conjuntos.html" class="dropdown__anchor">Back</a>
-                            </li>
 
                             <li class="dropdown__li">
                                 <a href="/src/pages/conjuntos/operaciones-pages/union/union.html" class="dropdown__anchor">Union</a>
@@ -117,15 +113,19 @@
 
     <h1 class="titulo">Union</h1>
 
-    <section>
+    <section class="input">
         <label class="label">Ingresa el número de conjuntos que deseas: </label>
         <input type="text" id="numConjuntos" name="numConjuntos" required>
-        <button type="button" onclick="crearCampos()">Crear Campos</button>
-        <button type="button" onclick="procesarConjuntos()">Procesar Conjuntos</button>        
+        <button class="btn" type="button" onclick="crearCampos()">Crear Campos</button>
+        <button class="btn" type="button" onclick="procesarConjuntos()">Procesar Conjuntos</button>
+        <button class="btn-borrar" type="button" onclick="crearCampos()">-</button>
+        <button class="btn-agregar" type="button" onclick="crearCampos()">+</button>
 
+    </section >
+    <section class="input2">
+        <div id="contenedorConjuntos"></div>
+        <div id="resultadoConjunto"></div>
     </section>
-    <div id="contenedorConjuntos"></div>
-    <div id="resultadoConjunto"></div>
     
     <script src="union.js"></script>
 </body>

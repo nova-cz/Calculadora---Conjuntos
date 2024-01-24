@@ -4,8 +4,7 @@
     font-weight: 400;
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
-    background: linear-gradient(45deg, #565656, #b1b1b2, #565656),
-        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.05) 10px, transparent 10px, transparent 20px);
+    background: #080915;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -16,16 +15,16 @@ html {
     margin: 0;
     padding: 0;
 }
-*{
+
+* {
     margin: 0;
     box-sizing: border-box;
     padding: 0;
 }
 
-body{
+body {
     font-family: Arial;
 }
-
 
 .titulo {
     font-size: 2.2em;
@@ -42,7 +41,42 @@ body{
     /* Ajusta según sea necesario */
 }
 
+.input {
+    text-align: center;
+}
 
+.input2 {
+    text-align: center;
+}
+
+.btn {
+    border-radius: 20px;
+    border: 0.3px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: .6em;
+    color: #f9f9f9;
+    font-weight: 500;
+    font-family: inherit;
+    background: linear-gradient(90deg, #2d3a4a, #1f2735);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    text-decoration: none;
+}
+
+/* #07166d, #1037d6, #060860 */
+
+.btn:hover {
+    background: linear-gradient(90deg, #1037d6, #060860);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn:focus,
+.btn:focus-visible {
+    outline: 40px auto -webkit-focus-ring-color;
+}
 
 body {
     margin: 0;
@@ -53,24 +87,24 @@ body {
     min-height: 100vh;
 }
 
-.nav{
+.nav {
     background: linear-gradient(90deg, #2d3a4a, #1f2735);
     --img1: scale(1);
     --img2: scale(0);
 }
-.nav:hover{
+
+.nav:hover {
     background: linear-gradient(90deg, #060860, #1037d6);
 }
 
-.nav:has( .dropdown:target ){
+.nav:has(.dropdown:target) {
     --img1: scale(0);
     --img2: scale(1);
 
-    --clip:inset(0 0 0 0);
-
+    --clip: inset(0 0 0 0);
 }
 
-.nav__container{
+.nav__container {
     width: 90%;
     margin: 0 auto;
     height: 70px;
@@ -84,13 +118,12 @@ body {
     overflow: hidden;
 }
 
-.nav__title{
+.nav__title {
     color: #fff;
     grid-area: title;
 }
 
-
-.nav__menu{
+.nav__menu {
     grid-area: img;
     position: relative;
     z-index: 10;
@@ -98,16 +131,16 @@ body {
     transform: var(--img1);
 }
 
-.nav__menu--second{
+.nav__menu--second {
     transform: var(--img2);
 }
 
-.nav__icon{
+.nav__icon {
     width: 30px;
     display: block;
 }
 
-.dropdown{
+.dropdown {
     position: absolute;
     background-color: #000;
     width: 75%;
@@ -118,41 +151,40 @@ body {
     padding: 1em;
 
     display: grid;
-    align-content:center ;
+    align-content: center;
     gap: 1rem;
 
     overflow-y: auto;
 
-
     clip-path: var(--clip, inset(0 0 100% 100%));
-    transition: clip-path .5s;
+    transition: clip-path 0.5s;
 }
 
-.dropdown__list{
+.dropdown__list {
     list-style: none;
 }
 
-.dropdown__link{
+.dropdown__link {
     color: rgb(184, 187, 191);
-    padding: 1em .7em;
+    padding: 1em 0.7em;
     text-decoration: none;
-    
+
     display: flex;
     align-items: center;
-    gap: .6rem;
+    gap: 0.6rem;
 
     position: relative;
     background-color: var(--bg, transparent);
     border-radius: 6px;
 }
 
-.dropdown__list:has( :checked ){
+.dropdown__list:has(:checked) {
     --rows: 1fr;
     --rotate: rotate(180deg);
-    --bg: #28303B;
+    --bg: #28303b;
 }
 
-.dropdown__check{
+.dropdown__check {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -160,32 +192,50 @@ body {
     cursor: pointer;
 }
 
-.dropdown__arrow{
+.dropdown__arrow {
     margin-left: auto;
     transform: var(--rotate, 0);
-    transition: .2s transform;
+    transition: 0.2s transform;
 }
 
-.dropdown__content{
+.dropdown__content {
     display: grid;
     grid-template-rows: var(--rows, 0fr);
-    transition: .3s grid-template-rows;
+    transition: 0.3s grid-template-rows;
 }
 
-.dropdown__sub{
+.dropdown__sub {
     overflow: hidden;
-
 }
 
-.dropdown__li{
+.dropdown__li {
     width: 85%;
     list-style: none;
     margin-left: auto;
 }
 
-.dropdown__anchor{
+.dropdown__anchor {
     padding: 1em 0;
     display: block;
-    color: #B6BABE;
+    color: #b6babe;
     text-decoration: none;
+}
+
+@media only screen and (max-width: 767px) {
+    .btn {
+        font-size: .8em;
+    }
+}
+
+/* Estilos para dispositivos móviles (max-width: 600px) */
+@media only screen and (max-width: 600px) {
+    .btn {
+        font-size: .8em;
+        width: 50%;
+        padding: 8px 16px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
 }
