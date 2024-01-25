@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="icon" href="/src/images/icon2.png" />
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/src/pages/conjuntos/operaciones-pages/union/union.css">
     <title>Document</title>
 </head>
 
@@ -115,19 +115,33 @@
 
     <section class="input">
         <label class="label">Ingresa el número de conjuntos que deseas: </label>
-        <input type="text" id="numConjuntos" name="numConjuntos" required>
-        <button class="btn" type="button" onclick="crearCampos()">Crear Campos</button>
-        <button class="btn" type="button" onclick="procesarConjuntos()">Procesar Conjuntos</button>
-        <button class="btn-borrar" type="button" onclick="crearCampos()">-</button>
-        <button class="btn-agregar" type="button" onclick="crearCampos()">+</button>
+        <div class="input-container">
+            <input type="text" id="numConjuntos" name="numConjuntos" required>
+            <div class="button-container">
+                <button class="btn-eliminar" id="btn-eliminar" type="button">-</button>
+                <button class="btn-agregar" id="btn-agregar" type="button">+</button>
+                <button class="btn btn-crear" type="button" onclick="crearCampos()">Crear Campos</button>
+                <button class="btn btn-procesar" type="button" onclick="procesarConjuntos()">Calcular</button>
+                <button class="btn btn-limpiar" type="button" onclick="limpiarContenido()">Limpiar</button>
 
-    </section >
+            </div>
+        </div>
+    </section>
+    
+    
     <section class="input2">
-        <div id="contenedorConjuntos"></div>
-        <div id="resultadoConjunto"></div>
+        <div class="contenedorConjuntos" id="contenedorConjuntos"></div>
+        <div class="resultadoConjuntos" id="resultadoConjunto"></div>
     </section>
     
     <script src="union.js"></script>
+
+
+    <footer>
+        <p>&copy; 2024 Rzzai</p>
+        <p>Github: <a href="https://github.com/nova-cz" target="_blank"><i class="fab fa-github"></i>Miguel_CZ</a></p>
+    </footer>
+
 </body>
 
 </html>
