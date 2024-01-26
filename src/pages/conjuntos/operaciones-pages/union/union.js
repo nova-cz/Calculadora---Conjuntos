@@ -97,13 +97,15 @@ function procesarConjuntos() {
         conjuntos.push(conjuntoArray);
     }
 
-    // Concatenar los conjuntos en un solo arreglo
-    var conjuntoFinal = [].concat(...conjuntos);
-
-    // Eliminar duplicados conservando el orden original
-    conjuntoFinal = conjuntoFinal.filter(function (value, index, self) {
-        return self.indexOf(value) === index;
-    });
+    // Comparar conjuntos completos para eliminar duplicados
+    var conjuntoFinal = conjuntos.reduce(function (acc, conjunto) {
+        if (!acc.some(function (existingConjunto) {
+            return JSON.stringify(existingConjunto) === JSON.stringify(conjunto);
+        })) {
+            acc.push(conjunto);
+        }
+        return acc;
+    }, []);
 
     // Mostrar el resultado en el documento
     var resultadoConjunto = document.getElementById('resultadoConjunto');
@@ -112,8 +114,6 @@ function procesarConjuntos() {
     // Mostrar la sección de resultados
     mostrarResultados();
 }
-
-
 
 function mostrarResultados() {
     var resultadoConjunto = document.getElementById('resultadoConjunto');
