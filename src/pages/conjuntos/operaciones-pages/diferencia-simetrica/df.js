@@ -13,35 +13,31 @@ function agregarCampo() {
     contenedor.appendChild(document.createElement('br'));
 }
 
-// Asociar la función agregarCampo al evento click del botón +
 document.getElementById('btn-agregar').addEventListener('click', agregarCampo);
-
 
 function eliminarCampo() {
     var contenedor = document.getElementById('contenedorConjuntos');
 
     if (contenedor.children.length > 2) {
-        // Verificar que haya al menos un conjunto para eliminar
-        // Eliminar el último conjunto y sus elementos (input y label)
-        contenedor.removeChild(contenedor.lastElementChild); // Eliminar el salto de línea
-        contenedor.removeChild(contenedor.lastElementChild); // Eliminar el input
-        contenedor.removeChild(contenedor.lastElementChild); // Eliminar la etiqueta <label>
+        contenedor.removeChild(contenedor.lastElementChild);
+        contenedor.removeChild(contenedor.lastElementChild);
+        contenedor.removeChild(contenedor.lastElementChild);
     }
 }
+
+document.getElementById('btn-eliminar').addEventListener('click', eliminarCampo);
 
 function limpiarContenido() {
     var contenedor = document.getElementById('contenedorConjuntos');
     var resultadoConjunto = document.getElementById('resultadoConjunto');
 
-    // Limpiar el contenido del contenedor de conjuntos
     contenedor.innerHTML = '';
 
-    // Limpiar el contenido del resultado
     resultadoConjunto.innerHTML = '';
     resultadoConjunto.style.display = 'none';
 
     var menu = document.getElementById('menu');
-    menu.style.zIndex = '1';  // Restaura el z-index del menú cuando se limpia el contenido
+    menu.style.zIndex = '1';
 }
 
 // Asociar la función eliminarCampo al evento click del botón -
@@ -49,16 +45,11 @@ document.getElementById('btn-eliminar').addEventListener('click', eliminarCampo)
 
 // Función para crear campos según el número de conjuntos ingresado
 function crearCampos() {
-    // Obtener el número de conjuntos ingresado por el usuario
     var numConjuntos = document.getElementById('numConjuntos').value;
-
-    // Obtener el div donde se colocarán los campos de entrada
     var contenedor = document.getElementById('contenedorConjuntos');
 
-    // Limpiar el contenido existente
     contenedor.innerHTML = '';
 
-    // Crear campos para cada conjunto
     for (var i = 0; i < numConjuntos; i++) {
         const label = document.createElement('label');
         label.innerHTML = 'Conjunto ' + (i + 1) + ': ';
@@ -67,29 +58,36 @@ function crearCampos() {
         input.type = 'text';
         input.name = 'conjunto' + (i + 1);
 
-        // Agregar un salto de línea para separar cada conjunto
         contenedor.appendChild(label);
         contenedor.appendChild(input);
         contenedor.appendChild(document.createElement('br'));
     }
 }
 
-function procesarConjuntos() {
-    // Obtener el número de conjuntos ingresado por el usuario
-    var numConjuntos = document.getElementById('numConjuntos').value;
+function obtenerDiferenciaSimetrica(conjunto1, conjunto2) {
+    var diferencia1 = conjunto1.filter(function (element) {
+        return !conjunto2.includes(element);
+    });
 
-    // Arreglo para almacenar los conjuntos ingresados
+    var diferencia2 = conjunto2.filter(function (element) {
+        return !conjunto1.includes(element);
+    });
+
+    var diferenciaSimetrica = diferencia1.concat(diferencia2);
+
+    return diferenciaSimetrica;
+}
+
+function procesarConjuntos() {
+    var numConjuntos = document.getElementById('numConjuntos').value;
     var conjuntos = [];
 
-    // Obtener los valores de cada conjunto y guardarlos en el arreglo
     for (var i = 0; i < numConjuntos; i++) {
         var inputName = 'conjunto' + (i + 1);
         var inputValue = document.getElementsByName(inputName)[0].value;
 
-        // Dividir el valor del conjunto por comas y agregarlo al arreglo
         var conjuntoArray = inputValue.split(',');
 
-        // Eliminar espacios en blanco alrededor de cada elemento
         conjuntoArray = conjuntoArray.map(function (element) {
             return element.trim();
         });
@@ -97,26 +95,16 @@ function procesarConjuntos() {
         conjuntos.push(conjuntoArray);
     }
 
-    // Calcular la intersección de todos los conjuntos
-    var interseccion = conjuntos.reduce(function (acc, conjunto) {
-        return obtenerInterseccion(acc, conjunto);
+    var diferenciaSimetrica = conjuntos.reduce(function (acc, conjunto) {
+        return obtenerDiferenciaSimetrica(acc, conjunto);
     });
 
-    // Mostrar el resultado en el documento
     var resultadoConjunto = document.getElementById('resultadoConjunto');
-    resultadoConjunto.innerHTML = '<p>Intersección de los Conjuntos:</p>' + formatConjunto(interseccion);
+    resultadoConjunto.innerHTML = '<p>Diferencia Simétrica de los Conjuntos:</p>' + formatConjunto(diferenciaSimetrica);
 
-    // Mostrar la sección de resultados
     mostrarResultados();
 }
-function obtenerInterseccion(conjunto1, conjunto2) {
-    // Filtrar los elementos comunes a ambos conjuntos
-    var interseccion = conjunto1.filter(function (element) {
-        return conjunto2.includes(element);
-    });
 
-    return interseccion;
-}
 
 function mostrarResultados() {
     var resultadoConjunto = document.getElementById('resultadoConjunto');

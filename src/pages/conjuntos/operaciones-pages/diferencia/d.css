@@ -8,7 +8,7 @@
     --text-color: rgba(255, 255, 255, 0.87);
     --background-color: #151515;
     --box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    --button-background: #7214ff;
+    --button-background: #2fff14;
 }
 
 /* Estilos generales del cuerpo del documento */
@@ -38,7 +38,7 @@ body {
 
 /* Estilos de la barra de navegación */
 .nav {
-    background: #7214ff;
+    background: #2fff14;
     --img1: scale(1);
     --img2: scale(0);
     z-index: 3; /* Asegúrate de que la clase .nav tenga un z-index mayor que el botón de limpiar */
@@ -63,7 +63,7 @@ body {
 }
 
 .nav__title {
-    color: #fff;
+    color: #000;
     grid-area: title;
     margin-left: 20px;
 }
@@ -82,6 +82,7 @@ body {
 .nav__icon {
     width: 30px;
     display: block;
+    filter: brightness(1) invert(1);
 }
 
 /* Estilos del menú desplegable */
@@ -190,10 +191,10 @@ h1 {
     border: 0.3px solid transparent;
     padding: 0.6em 1.2em;
     font-size: 0.8em;  /* Ajusta el tamaño del texto según tus preferencias */
-    color: #f9f9f9;
+    color: #000;
     font-weight: 500;
     font-family: inherit;
-    background: #7214ff;
+    background: #2fff14;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: box-shadow 0.25s, background 0.25s;
@@ -304,8 +305,8 @@ h1 {
     display: none; /* Oculta la sección por defecto */
     margin-top: 20px;
     padding: 20px;
-    background-color: #7214ff; /* Cambia el color de fondo según tus preferencias */
-    color: #fff;
+    background-color: #2fff14; /* Cambia el color de fondo según tus preferencias */
+    color: #000;
     border-radius: 10px; /* Agrega bordes redondeados */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Agrega sombra */
     font-size: 1.2em; /* Ajusta el tamaño de fuente según tus preferencias */
@@ -315,7 +316,7 @@ h1 {
 
 /* Estilos para hacer el resultado más brillante */
 .resultadoConjuntos p {
-    color: #ffeb12; /* Cambia el color del texto según tus preferencias */
+    color: #000000; /* Cambia el color del texto según tus preferencias */
 }
 
 /* Estilos para hacer el texto más grande y brillante al pasar el ratón sobre él */
@@ -411,8 +412,8 @@ h1 {
 /* Estilos para el footer */
 /* Estilos para el footer */
 footer {
-    background-color: #7214ff;
-    color: #fff;
+    background-color: #2fff14;
+    color: #000;
     padding: 1em;
     text-align: center;
     width: 100%;
@@ -423,7 +424,7 @@ footer {
 
 
 footer a {
-    color: #fff;
+    color: #000;
     text-decoration: none;
 }
 

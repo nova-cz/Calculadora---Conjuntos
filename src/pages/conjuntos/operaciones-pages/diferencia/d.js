@@ -74,6 +74,13 @@ function crearCampos() {
     }
 }
 
+function obtenerDiferencia(conjunto1, conjunto2) {
+    // Filtrar los elementos del conjunto1 que no están en conjunto2
+    var diferencia = conjunto1.filter(element => !conjunto2.includes(element));
+
+    return diferencia;
+}
+
 function procesarConjuntos() {
     // Obtener el número de conjuntos ingresado por el usuario
     var numConjuntos = document.getElementById('numConjuntos').value;
@@ -97,25 +104,20 @@ function procesarConjuntos() {
         conjuntos.push(conjuntoArray);
     }
 
-    // Calcular la intersección de todos los conjuntos
-    var interseccion = conjuntos.reduce(function (acc, conjunto) {
-        return obtenerInterseccion(acc, conjunto);
-    });
-
-    // Mostrar el resultado en el documento
+    // Calcular y mostrar la diferencia entre todos los conjuntos
     var resultadoConjunto = document.getElementById('resultadoConjunto');
-    resultadoConjunto.innerHTML = '<p>Intersección de los Conjuntos:</p>' + formatConjunto(interseccion);
+    resultadoConjunto.innerHTML = '<p>Diferencias entre conjuntos:</p>';
+
+    for (var i = 0; i < conjuntos.length; i++) {
+        for (var j = i + 1; j < conjuntos.length; j++) {
+            var diferencia = obtenerDiferencia(conjuntos[i], conjuntos[j]);
+            resultadoConjunto.innerHTML += '<p>Diferencia entre Conjunto ' + (i + 1) + ' y Conjunto ' + (j + 1) + ': ' + formatConjunto(diferencia) + '</p>';
+        }
+    }
 
     // Mostrar la sección de resultados
     mostrarResultados();
-}
-function obtenerInterseccion(conjunto1, conjunto2) {
-    // Filtrar los elementos comunes a ambos conjuntos
-    var interseccion = conjunto1.filter(function (element) {
-        return conjunto2.includes(element);
-    });
-
-    return interseccion;
+    console.log("Proceso completado.");
 }
 
 function mostrarResultados() {
@@ -124,7 +126,6 @@ function mostrarResultados() {
 
     var menu = document.getElementById('menu');
     menu.style.zIndex = '2';  // Asigna un z-index mayor al menú cuando se muestra el resultado
-
 }
 
 // Función para formatear un conjunto en el formato {1,2,3,...}
@@ -133,7 +134,7 @@ function formatConjunto(conjunto) {
 }
 
 //-------------------------------------------
-//Seccion del diseñño de la pagina
+//Seccion del diseño de la pagina
 document.addEventListener("click", function (event) {
     var menu = document.getElementById("menu");
     var body = document.body;
