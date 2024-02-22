@@ -1,0 +1,435 @@
+/* Definición de variables de estilo global */
+:root {
+    --font-family: 'Inter', system-ui, 'Avenir', 'Helvetica', 'Arial', sans-serif;
+    --font-size: 16px;
+    --line-height: 1.5;
+    --font-weight: 400;
+    --color-scheme: light dark;
+    --text-color: rgba(255, 255, 255, 0.87);
+    --background-color: #151515;
+    --box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    --button-background: #ead306;
+}
+
+/* Estilos generales del cuerpo del documento */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-family);
+    line-height: var(--line-height);
+    font-weight: var(--font-weight);
+    color: var(--text-color);
+    background: var(--background-color);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Estilos globales para todos los elementos */
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+/* Estilos de la barra de navegación */
+.nav {
+    background: #ead306;
+    --img1: scale(1);
+    --img2: scale(0);
+    z-index: 3; /* Asegúrate de que la clase .nav tenga un z-index mayor que el botón de limpiar */
+}
+
+.nav:has(.dropdown:target) {
+    --img1: scale(0);
+    --img2: scale(1);
+    --clip: inset(0 0 0 0);
+}
+
+.nav__container {
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-areas: "title img";
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+.nav__title {
+    color: #000;
+    grid-area: title;
+    margin-left: 20px;
+}
+
+.nav__menu {
+    grid-area: img;
+    position: relative;
+    z-index: 10;
+    transform: var(--img1);
+}
+
+.nav__menu--second {
+    transform: var(--img2);
+}
+
+.nav__icon {
+    width: 30px;
+    filter: brightness(1) invert(1);
+    display: block;
+}
+
+/* Estilos del menú desplegable */
+.dropdown {
+    position: absolute;
+    background-color: #000;
+    width: 75%;
+    max-width: 300px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 1em;
+    display: grid;
+    align-content: center;
+    gap: 1rem;
+    overflow-y: auto;
+    clip-path: var(--clip, inset(0 0 100% 100%));
+    transition: clip-path 0.5s;
+    z-index: 2; /* Asegúrate de que el menú tenga un z-index menor que el contenedor principal */
+}
+
+.dropdown__list {
+    list-style: none;
+}
+
+.dropdown__link {
+    color: rgb(184, 187, 191);
+    padding: 1em 0.7em;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    position: relative;
+    background-color: var(--bg, transparent);
+    border-radius: 6px;
+}
+
+.dropdown__list:has(:checked) {
+    --rows: 1fr;
+    --rotate: rotate(180deg);
+    --bg: #28303b;
+}
+
+.dropdown__check {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.dropdown__arrow {
+    margin-left: auto;
+    transform: var(--rotate, 0);
+    transition: 0.2s transform;
+}
+
+.dropdown__content {
+    display: grid;
+    grid-template-rows: var(--rows, 0fr);
+    transition: 0.3s grid-template-rows;
+}
+
+.dropdown__sub {
+    overflow: hidden;
+}
+
+.dropdown__li {
+    width: 85%;
+    list-style: none;
+    margin-left: auto;
+}
+
+.dropdown__anchor {
+    padding: 1em 0;
+    display: block;
+    color: #b6babe;
+    text-decoration: none;
+}
+
+/* Estilos del título principal */
+h1 {
+    margin-top: 1em;
+    line-height: 1.1;
+    margin-bottom: 1em;
+}
+
+/* Estilos del label */
+.label {
+    font-size: 1.3em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;  /* Ajusta la altura según tus preferencias */
+}
+
+/* Estilos comunes para todos los tamaños de pantalla */
+.btn,
+.btn-eliminar,
+.btn-agregar,
+.btn-crear,
+.btn-procesar {
+    border-radius: 20px;
+    border: 0.3px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 0.8em;  /* Ajusta el tamaño del texto según tus preferencias */
+    color: #000;
+    font-weight: 500;
+    font-family: inherit;
+    background: #ead306;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: box-shadow 0.25s, background 0.25s;
+    text-decoration: none;
+    box-sizing: border-box;
+    height: 40px;
+    text-align: center; /* Añade esta línea para centrar el texto */
+    line-height: 10px; /* Centra el texto verticalmente ajustando la altura del botón */
+    
+}
+
+/* Estilos del botón al pasar el mouse sobre él */
+.btn:hover,
+.btn-eliminar:hover,
+.btn-agregar:hover,
+.btn-crear:hover,
+.btn-procesar:hover {
+    box-shadow: 0px 0px 0px 4px rgba(255, 255, 255, 0.8),
+        0px 2px 4px rgba(0, 0, 0, 0.2), 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos del botón cuando está enfocado */
+.btn:focus,
+.btn-eliminar:focus,
+.btn-agregar:focus,
+.btn-crear:focus,
+.btn-procesar:focus {
+    filter: brightness(0.8);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2), 0px 4px 8px rgba(0, 0, 0, 0.3);
+    border: 4px solid rgba(255, 255, 255, 0.5);
+    outline: none;
+}
+
+/* Estilos del botón al hacer clic en él */
+.btn:active,
+.btn-eliminar:active,
+.btn-agregar:active,
+.btn-crear:active,
+.btn-procesar:active {
+    filter: brightness(0.8);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2), 0px 4px 8px rgba(0, 0, 0, 0.3);
+    border: 4px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Estilos del título */
+.titulo {
+    text-align: center;
+}
+
+/* Estilos del contenedor del input */
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Estilos del input */
+.input-container input {
+    flex-grow: 1;
+    margin-right: 5px;
+    padding: 8px;
+    font-size: 1em;
+    max-width: 500px;
+}
+
+/* Estilos del contenedor de botones */
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+
+/* Estilos para el botón de limpiar */
+.btn-limpiar {
+    position: relative;
+    z-index: 2; /* Asegúrate de que el botón de limpiar tenga un z-index mayor que el menú */
+    margin-left: 0; /* Centra el botón de limpiar en dispositivos móviles */
+    margin-top: 0; /* Ajusta el margen superior del botón de limpiar en dispositivos móviles */
+}
+
+
+/* Estilos para la sección input2 */
+.input2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Ajusta el margen superior según tus preferencias */
+    margin-bottom: 60px; /* Ajusta el margen inferior según tus preferencias */
+}
+
+
+.contenedorConjuntos {
+    margin-bottom: 20px; /* Ajusta el margen inferior según tus preferencias */
+}
+
+/* Estilos para los inputs en la sección input2 */
+.input2 input {
+    padding: 15px; /* Ajusta el padding según tus preferencias */
+    font-size: 1.2em; /* Ajusta el tamaño de fuente según tus preferencias */
+    margin-bottom: 10px; /* Ajusta el margen inferior según tus preferencias */
+    width: 100%; /* Ocupa el 100% del ancho disponible */
+    box-sizing: border-box;
+}
+
+/* Estilos para la sección de resultados */
+.resultadoConjuntos {
+    display: none; /* Oculta la sección por defecto */
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ead306; /* Cambia el color de fondo según tus preferencias */
+    color: #000000;
+    border-radius: 10px; /* Agrega bordes redondeados */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Agrega sombra */
+    font-size: 1.2em; /* Ajusta el tamaño de fuente según tus preferencias */
+    font-weight: bold; /* Ajusta el peso de la fuente según tus preferencias */
+    text-align: center;
+}
+
+/* Estilos para hacer el resultado más brillante */
+.resultadoConjuntos p {
+    color: #000000; /* Cambia el color del texto según tus preferencias */
+}
+
+/* Estilos para hacer el texto más grande y brillante al pasar el ratón sobre él */
+.resultadoConjuntos:hover {
+    transform: scale(1.1); /* Hace el resultado un 10% más grande al pasar el ratón sobre él */
+    transition: transform 0.3s; /* Agrega una transición suave */
+}
+
+/* Estilos para tamaños de pantalla mayores a 760px */
+@media (min-width: 760px) {
+    
+    
+
+    .titulo {
+        font-size: 1.5em;
+        text-align: center;
+        padding: 10px 20px;
+        width: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Estilos para tamaños de pantalla menores o iguales a 767px (móviles) */
+@media (max-width: 767px) {
+    .btn,
+    .btn-eliminar,
+    .btn-agregar,
+    .btn-crear,
+    .btn-procesar {
+        text-align: center;
+        padding: 3vh 5vw; /* Ajusta el padding usando vh y vw para que sea relativo al tamaño de la pantalla */
+        width: auto;
+        display: block;
+        margin: 40px auto 0; /* Ajusta el margen superior y centraliza horizontalmente */
+        font-size: 1.2em;  /* Ajusta el tamaño del texto según tus preferencias */
+    }
+}
+/* Estilos para tamaños de pantalla menores o iguales a 896px */
+@media (max-width: 896px) {
+    .btn,
+    .btn-eliminar,
+    .btn-agregar,
+    .btn-crear,
+    .btn-limpiar,
+    .btn-procesar {
+        text-align: center;
+        padding: 1em 2em; /* Ajusta el padding según tus preferencias */
+        width: auto;
+        display: block;
+        margin: 10px auto 0; /* Ajusta el margen superior y centraliza horizontalmente */
+        font-size: 1em;  /* Ajusta el tamaño del texto según tus preferencias */
+    }
+
+    .input-container {
+        flex-direction: column; /* Cambia a una columna para el contenedor del input en dispositivos móviles */
+        align-items: center; /* Centra horizontalmente el contenedor del input en dispositivos móviles */
+    }
+
+    .input-container input {
+        padding: 5px; /* Ajusta el padding del input en dispositivos móviles */
+        font-size: 0.8em; /* Ajusta el tamaño de fuente del input en dispositivos móviles */
+        max-width: 80%; /* Establece un ancho máximo para el input */
+    }
+
+    .label {
+        font-size: 0.9em;
+    }
+
+    .button-container {
+        flex-direction: column; /* Cambia a una columna para los botones en dispositivos móviles */
+        align-items: center; /* Centra horizontalmente en dispositivos móviles */
+    }
+    
+    .btn-limpiar {
+        margin-left: 25px; /* Centra el botón de limpiar en dispositivos móviles */
+        margin-top: 10px; /* Ajusta el margen superior del botón de limpiar en dispositivos móviles */
+    }
+
+    .input2 input {
+        padding: 5px; /* Ajusta el padding del input en dispositivos móviles */
+        font-size: 0.8em; /* Ajusta el tamaño de fuente del input en dispositivos móviles */
+    }
+
+    .nav__container {
+        width: 80%;
+        margin: 0 auto; /* Centra el contenedor horizontalmente */
+    }
+}
+
+
+/* Estilos para el footer */
+/* Estilos para el footer */
+footer {
+    background-color: #ead306;
+    color: #000;
+    padding: 1em;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative; /* Cambia a position: relative; */
+    margin-top: auto; /* Ajusta el margen superior a auto para fijar en la parte inferior */
+}
+
+
+footer a {
+    color: #000;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+#menu {
+    z-index: 2; /* Asegura que el menú tenga un z-index mayor que el botón de limpiar */
+}

@@ -38,7 +38,7 @@ body {
 
 /* Estilos de la barra de navegación */
 .nav {
-    background: #21ffe9;
+    background: #ffffff;
     --img1: scale(1);
     --img2: scale(0);
     z-index: 3; /* Asegúrate de que la clase .nav tenga un z-index mayor que el botón de limpiar */
@@ -194,7 +194,7 @@ h1 {
     color: #000;
     font-weight: 500;
     font-family: inherit;
-    background: #21ffe9;
+    background: #ffffff;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: box-shadow 0.25s, background 0.25s;
@@ -304,7 +304,7 @@ h1 {
     display: none;
     margin-top: 20px;
     padding: 20px;
-    background-color: #21ffe9;
+    background-color: #ffffff;
     color: #000;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -326,7 +326,7 @@ h1 {
 .contenedorConjuntos div {
     margin: 10px 0;
     padding: 10px;
-    background-color: #21ffe9;
+    background-color: #ffffff;
     color: #000;
     border-radius: 6px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -346,7 +346,7 @@ h1 {
     display: none;
     margin-top: 20px;
     padding: 20px;
-    background-color: #21ffe9;
+    background-color: #ffffff;
     color: #000;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -436,7 +436,7 @@ h1 {
     }
     
     .btn-limpiar {
-        margin-left: 0; /* Centra el botón de limpiar en dispositivos móviles */
+        margin-left: 10; /* Centra el botón de limpiar en dispositivos móviles */
         margin-top: 10px; /* Ajusta el margen superior del botón de limpiar en dispositivos móviles */
     }
 
@@ -455,7 +455,7 @@ h1 {
 /* Estilos para el footer */
 /* Estilos para el footer */
 footer {
-    background-color: #21ffe9;
+    background-color: #ffffff;
     color: #000;
     padding: 1em;
     text-align: center;
